@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  /* color: var(--foreground);
+  background: var(--background); */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.control-group .button-group{
+  display: flex;
+  justify-content: space-between;
+  gap: 2;
+}
+.control-group button{
+  /* background-color: rgb(212, 205, 205); */
+  margin-right: 5px;
+  margin-top: 5px;
+  padding: 2px 5px;
+  border-radius: 7px;
+  padding: 5px;
+  text-align: center;
+}
+
+.tiptap pre {
+  white-space: pre-wrap;
+}
+
+.tiptap pre {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  border-radius: .25rem;
+  border-width: 1px;
+  border-color: rgb(0 0 0 / 1 ) !important;
+  background-color: rgb(64 64 64 / 1) !important;
+  padding: 1rem;
+  color: rgb(255 255 255 / 1) !important;
+  caret-color: #fff;
+}
+
+.tiptap {
+  border: none !important;
+  outline: none !important;
+  height: 100vh;
+}
+ol{
+  columns: green !important;
+}
+
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.tiptap p.is-empty::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+/* .ProseMirror {
+  min-height: 40vh;
+  border: 2px solid peru;
+  border-radius: 10px;
+  outline: none;
+  padding: 1em;
+} */
+
+.items {
+  position: relative;
+  border-radius: 0.25rem;
+  background: white;
+  color: rgba(black, 0.8);
+  overflow: hidden;
+  font-size: 0.9rem;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 0.2rem 0.5rem;
+}
+
+.item.is-selected,
+.item:hover {
+  color: #a975ff;
+  background: rgba(#a975ff, 0.1);
+}
+
+.tiptap blockquote {
+  border-left: 4px solid rgb(64 64 64 /1) !important;
+  padding: .5rem 1rem;
+}
+
+.draggable-item {
+  cursor: move;
+  background-color: #f0f0f0;
+  border: 1px dashed #ccc;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.tiptap img{
+  margin: 20px 0 !important;
+}
+
+.tiptap a{
+  cursor: pointer;
+  color: rgb(23, 23, 153);
+  text-decoration: underline; /* Only underline on hover */
+
+}
