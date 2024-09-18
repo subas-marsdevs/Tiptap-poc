@@ -22,6 +22,7 @@ import Blockquote from '@tiptap/extension-blockquote'
 import Callout from './callout/callout';
 import ReactComponent from './callout/CalloutExtention'
 import { all, createLowlight } from 'lowlight'
+import CodeBlock from '@tiptap/extension-code-block'
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
 // import CodeBlockComponent from './codeblock/CodeBlockComponent'
 // import DraggableNode from './drag-drop/DragNode'
@@ -61,6 +62,7 @@ export default () => {
       TextAlign.configure({
         types: ['heading', 'paragraph'],
       }),
+      CodeBlock,
       Highlight,
       Image,
       BulletList,
@@ -91,19 +93,18 @@ export default () => {
           }
         }
       }),
-      CodeBlockLowlight
-        .extend({
-          addNodeView() {
-            return ReactNodeViewRenderer(CodeBlockComponent)
-          },
-        })
-        .configure({ lowlight }),
       Commands.configure({
         suggestion: {
           items: getSuggestionItems,
           render: renderItems
         }
       }),
+      // CodeBlockLowlight
+      //   .extend({
+      //     addNodeView() {
+      //       return ReactNodeViewRenderer(CodeBlockComponent)
+      //     },
+      //   }).configure({ lowlight }),
       // Callout,
       ReactComponent,
     ],
