@@ -99,12 +99,12 @@ export default () => {
           render: renderItems
         }
       }),
-      // CodeBlockLowlight
-      //   .extend({
-      //     addNodeView() {
-      //       return ReactNodeViewRenderer(CodeBlockComponent)
-      //     },
-      //   }).configure({ lowlight }),
+      CodeBlockLowlight
+        .extend({
+          addNodeView() {
+            return ReactNodeViewRenderer(CodeBlockComponent)
+          },
+        }).configure({ lowlight }),
       // Callout,
       ReactComponent,
     ],
