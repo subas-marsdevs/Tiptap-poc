@@ -21,26 +21,28 @@ import renderItems from "./suggetions/renderItems";
 import Blockquote from '@tiptap/extension-blockquote'
 import Callout from './callout/callout';
 import ReactComponent from './callout/CalloutExtention'
-import { all, createLowlight } from 'lowlight'
+// import { all, createLowlight } from 'lowlight'
 import CodeBlock from '@tiptap/extension-code-block'
-import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
+// import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
 // import CodeBlockComponent from './codeblock/CodeBlockComponent'
 // import DraggableNode from './drag-drop/DragNode'
 import css from 'highlight.js/lib/languages/css'
 import js from 'highlight.js/lib/languages/javascript'
 import ts from 'highlight.js/lib/languages/typescript'
 import html from 'highlight.js/lib/languages/xml'
+import { CodeBlockLowlight } from '@tiptap/extension-code-block-lowlight';
+import { common, createLowlight } from 'lowlight';
 
-const CodeBlockComponent = dynamic(() => import('./codeblock/CodeBlockComponent'), { ssr: false });
+// const CodeBlockComponent = dynamic(() => import('./codeblock/CodeBlockComponent'), { ssr: false });
 
 
-const lowlight = createLowlight(all)
+// const lowlight = createLowlight(all)
 
 // you can also register individual languages
-lowlight.register('html', html)
-lowlight.register('css', css)
-lowlight.register('js', js)
-lowlight.register('ts', ts)
+// lowlight.register('html', html)
+// lowlight.register('css', css)
+// lowlight.register('js', js)
+// lowlight.register('ts', ts)
 
 export default () => {
 
@@ -58,6 +60,10 @@ export default () => {
           keepMarks: true,
           keepAttributes: true,
         },
+        codeBlock: false
+      }),
+      CodeBlockLowlight.configure({
+        lowlight: createLowlight(common)
       }),
       TextAlign.configure({
         types: ['heading', 'paragraph'],
@@ -99,7 +105,7 @@ export default () => {
           render: renderItems
         }
       }),
-      CodeBlockLowlight.configure({ lowlight }),
+      // CodeBlockLowlight.configure({ lowlight }),
       // CodeBlockLowlight
       //   .extend({
       //     addNodeView() {
@@ -108,48 +114,7 @@ export default () => {
       // }).configure({ lowlight }),
       ReactComponent,
     ],
-    content: `
-      <h2>
-        Hi there,
-      </h2>
-      <p>
-        this is a <em>basic</em> example of <strong>Tiptap</strong>. Sure, there are all kind of basic text styles you’d probably expect from a text editor. But wait until you see the lists:
-      </p>
-      <ul>
-        <li>
-          That’s a bullet list with one …
-        </li>
-        <li>
-          … or two list items.
-        </li>
-      </ul>
-      <p>
-        Isn’t that great? And all of that is editable. But wait, there’s more. Let’s try a code block:
-      </p>
-      <pre><code class="language-css">body {
-        display: none;
-      }</code></pre>
-      <p>
-        I know, I know, this is impressive. It’s only the tip of the iceberg though. Give it a try and click a little bit around. Don’t forget to check the other examples too.
-      </p>
-      <blockquote>
-        Wow, that’s amazing. Good work, boy! 👏
-        <br />
-        — Mom
-      </blockquote>
-       <pre><code class="language-javascript">for (var i=1; i <= 20; i++)
-{
-  if (i % 15 == 0)
-    console.log("FizzBuzz");
-  else if (i % 3 == 0)
-    console.log("Fizz");
-  else if (i % 5 == 0)
-    console.log("Buzz");
-  else
-    console.log(i);
-}</code></pre>
-      <react-component />
-    `,
+    content: ``,
     // onUpdate: ({ transaction, editor }) => {
     //   if (transaction.docChanged) {
     //     const { selection } = transaction;
