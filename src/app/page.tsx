@@ -1,5 +1,9 @@
 import Image from "next/image";
-import TipTapEditor from '../component/TipTap-Editor';
+import dynamic from 'next/dynamic';
+// import TipTapEditor from '../component/TipTap-Editor';
+const TipTapEditor = dynamic(() => import('../component/TipTap-Editor'), {
+  ssr: false, // Ensure no SSR for the editor
+});
 
 export default function Home() {
   return (

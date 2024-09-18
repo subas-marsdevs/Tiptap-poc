@@ -62,7 +62,7 @@ export default () => {
       TextAlign.configure({
         types: ['heading', 'paragraph'],
       }),
-      CodeBlock,
+      // CodeBlock,
       Highlight,
       Image,
       BulletList,
@@ -104,8 +104,7 @@ export default () => {
           addNodeView() {
             return ReactNodeViewRenderer(CodeBlockComponent)
           },
-        }).configure({ lowlight }),
-      // Callout,
+      }).configure({ lowlight }),
       ReactComponent,
     ],
     content: `

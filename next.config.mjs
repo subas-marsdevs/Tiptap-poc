@@ -15,7 +15,7 @@ const nextConfig = {
         // !! WARN !!
         ignoreBuildErrors: true,
     },
-    swcMinify: false,
+    // swcMinify: false,
 };
 
 export default nextConfig;
