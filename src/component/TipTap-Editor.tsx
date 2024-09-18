@@ -1,6 +1,7 @@
 'use client'
 
 import './style.scss'
+import dynamic from 'next/dynamic';
 import StarterKit from '@tiptap/starter-kit'
 import React, { useState, useEffect } from 'react'
 import MenuBar from './editor-menubar'
@@ -22,12 +23,16 @@ import Callout from './callout/callout';
 import ReactComponent from './callout/CalloutExtention'
 import { all, createLowlight } from 'lowlight'
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
-import CodeBlockComponent from './codeblock/CodeBlockComponent'
+// import CodeBlockComponent from './codeblock/CodeBlockComponent'
 // import DraggableNode from './drag-drop/DragNode'
 import css from 'highlight.js/lib/languages/css'
 import js from 'highlight.js/lib/languages/javascript'
 import ts from 'highlight.js/lib/languages/typescript'
 import html from 'highlight.js/lib/languages/xml'
+
+const CodeBlockComponent = dynamic(() => import('./codeblock/CodeBlockComponent'), { ssr: false });
+
+
 const lowlight = createLowlight(all)
 
 // you can also register individual languages
