@@ -36,10 +36,10 @@ const CodeBlockComponent = dynamic(() => import('./codeblock/CodeBlockComponent'
 const lowlight = createLowlight(all)
 
 // you can also register individual languages
-// lowlight.register('html', html)
-// lowlight.register('css', css)
-// lowlight.register('js', js)
-// lowlight.register('ts', ts)
+lowlight.register('html', html)
+lowlight.register('css', css)
+lowlight.register('js', js)
+lowlight.register('ts', ts)
 
 export default () => {
 
@@ -91,18 +91,19 @@ export default () => {
           }
         }
       }),
+      CodeBlockLowlight
+        .extend({
+          addNodeView() {
+            return ReactNodeViewRenderer(CodeBlockComponent)
+          },
+        })
+        .configure({ lowlight }),
       Commands.configure({
         suggestion: {
           items: getSuggestionItems,
           render: renderItems
         }
       }),
-      CodeBlockLowlight
-        .extend({
-          addNodeView() {
-            return ReactNodeViewRenderer(CodeBlockComponent)
-          },
-        }).configure({ lowlight }),
       // Callout,
       ReactComponent,
     ],
