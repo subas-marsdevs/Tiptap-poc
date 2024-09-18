@@ -21,9 +21,6 @@ import renderItems from "./suggetions/renderItems";
 import Blockquote from '@tiptap/extension-blockquote'
 import Callout from './callout/callout';
 import ReactComponent from './callout/CalloutExtention'
-// import { all, createLowlight } from 'lowlight'
-// import CodeBlock from '@tiptap/extension-code-block'
-// import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
 import CodeBlockComponent from './codeblock/CodeBlockComponent'
 // import DraggableNode from './drag-drop/DragNode'
 import css from 'highlight.js/lib/languages/css'
@@ -33,16 +30,6 @@ import html from 'highlight.js/lib/languages/xml'
 import { CodeBlockLowlight } from '@tiptap/extension-code-block-lowlight';
 import { all, common, createLowlight } from 'lowlight';
 
-// const CodeBlockComponent = dynamic(() => import('./codeblock/CodeBlockComponent'), { ssr: false });
-
-
-// const lowlight = createLowlight(all)
-
-// you can also register individual languages
-// lowlight.register('html', html)
-// lowlight.register('css', css)
-// lowlight.register('js', js)
-// lowlight.register('ts', ts)
 
 export default () => {
 
@@ -62,13 +49,9 @@ export default () => {
         },
         codeBlock: false
       }),
-      // CodeBlockLowlight.configure({
-      //   lowlight: createLowlight(common)
-      // }),
       TextAlign.configure({
         types: ['heading', 'paragraph'],
       }),
-      // CodeBlock,
       Highlight,
       Image,
       BulletList,
@@ -105,13 +88,12 @@ export default () => {
           render: renderItems
         }
       }),
-      // CodeBlockLowlight.configure({ lowlight }),
       CodeBlockLowlight
         .extend({
           addNodeView() {
             return ReactNodeViewRenderer(CodeBlockComponent)
           },
-      }).configure({ lowlight: createLowlight(common) }),
+      }).configure({ lowlight: createLowlight(all) }),
       ReactComponent,
     ],
     content: `
