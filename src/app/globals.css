@@ -138,3 +138,41 @@ ol{
   text-decoration: underline; /* Only underline on hover */
 
 }
+/* .group-hover{
+  color: #0a0a0a !important;
+}
+
+.group-hover:opacity-100 {
+  transition: opacity 0.2s ease-in-out !important;
+} */
+
+/* drag and drop */
+
+/* .editor-container {
+  position: relative;
+}
+
+.floating-menu {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.floating-menu button {
+  padding: 5px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  margin: 2px 0;
+} */
+
+.floating-menu button:hover {
+  background-color: #e0e0e0;
+}

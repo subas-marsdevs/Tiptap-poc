@@ -4,7 +4,7 @@ import './style.scss'
 import StarterKit from '@tiptap/starter-kit'
 import React, { useState, useEffect } from 'react'
 import MenuBar from './editor-menubar'
-import { EditorContent, useEditor, NodeViewWrapper } from '@tiptap/react'
+import { EditorContent, useEditor, ReactNodeViewRenderer, NodeViewWrapper } from '@tiptap/react'
 import Highlight from '@tiptap/extension-highlight'
 import TextAlign from '@tiptap/extension-text-align'
 import Image from '@tiptap/extension-image'
@@ -12,18 +12,37 @@ import Link from '@tiptap/extension-link'
 import Underline from '@tiptap/extension-underline'
 import Placeholder from '@tiptap/extension-placeholder'
 import { FloatingMenu } from './floating-menu'
+import Dropcursor from '@tiptap/extension-dropcursor'
 import BulletList from '@tiptap/extension-bullet-list'
 import Commands from './suggetions/commands';
 import getSuggestionItems from "./suggetions/items";
 import renderItems from "./suggetions/renderItems";
 import Blockquote from '@tiptap/extension-blockquote'
-import Callout from './callout';
-import ReactComponent from './CalloutExtention'
+import Callout from './callout/callout';
+import ReactComponent from './callout/CalloutExtention'
+import { all, createLowlight } from 'lowlight'
+import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
+import CodeBlockComponent from './codeblock/CodeBlockComponent'
+// import DraggableNode from './drag-drop/DragNode'
+import css from 'highlight.js/lib/languages/css'
+import js from 'highlight.js/lib/languages/javascript'
+import ts from 'highlight.js/lib/languages/typescript'
+import html from 'highlight.js/lib/languages/xml'
+const lowlight = createLowlight(all)
+
+// you can also register individual languages
+// lowlight.register('html', html)
+// lowlight.register('css', css)
+// lowlight.register('js', js)
+// lowlight.register('ts', ts)
 
 export default () => {
 
   const editor = useEditor({
     extensions: [
+      Dropcursor.configure({
+        color: 'red',
+      }),
       StarterKit.configure({
         bulletList: {
           keepMarks: true,
@@ -73,8 +92,14 @@ export default () => {
           render: renderItems
         }
       }),
+      CodeBlockLowlight
+        .extend({
+          addNodeView() {
+            return ReactNodeViewRenderer(CodeBlockComponent)
+          },
+        }).configure({ lowlight }),
       // Callout,
-      ReactComponent
+      ReactComponent,
     ],
     content: `
       <h2>
@@ -105,7 +130,17 @@ export default () => {
         <br />
         — Mom
       </blockquote>
-
+       <pre><code class="language-javascript">for (var i=1; i <= 20; i++)
+{
+  if (i % 15 == 0)
+    console.log("FizzBuzz");
+  else if (i % 3 == 0)
+    console.log("Fizz");
+  else if (i % 5 == 0)
+    console.log("Buzz");
+  else
+    console.log(i);
+}</code></pre>
       <react-component />
     `,
     // onUpdate: ({ transaction, editor }) => {
@@ -146,9 +181,9 @@ export default () => {
   //   ) : null;
   // };
 
-  const addCallout = () => {
-    editor?.chain().focus().setNode('callout', { backgroundColor: 'lightgreen' }).run();
-  };
+  // const addCallout = () => {
+  //   editor?.chain().focus().setNode('callout', { backgroundColor: 'lightgreen' }).run();
+  // };
 
   return (
     <>
