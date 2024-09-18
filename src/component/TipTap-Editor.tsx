@@ -21,22 +21,22 @@ import renderItems from "./suggetions/renderItems";
 import Blockquote from '@tiptap/extension-blockquote'
 import Callout from './callout/callout';
 import ReactComponent from './callout/CalloutExtention'
-// import { all, createLowlight } from 'lowlight'
-import CodeBlock from '@tiptap/extension-code-block'
-// import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
-// import CodeBlockComponent from './codeblock/CodeBlockComponent'
+import { all, createLowlight } from 'lowlight'
+// import CodeBlock from '@tiptap/extension-code-block'
+import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
+import CodeBlockComponent from './codeblock/CodeBlockComponent'
 // import DraggableNode from './drag-drop/DragNode'
 import css from 'highlight.js/lib/languages/css'
 import js from 'highlight.js/lib/languages/javascript'
 import ts from 'highlight.js/lib/languages/typescript'
 import html from 'highlight.js/lib/languages/xml'
-import { CodeBlockLowlight } from '@tiptap/extension-code-block-lowlight';
-import { common, createLowlight } from 'lowlight';
+// import { CodeBlockLowlight } from '@tiptap/extension-code-block-lowlight';
+// import { common, createLowlight } from 'lowlight';
 
 // const CodeBlockComponent = dynamic(() => import('./codeblock/CodeBlockComponent'), { ssr: false });
 
 
-// const lowlight = createLowlight(all)
+const lowlight = createLowlight(all)
 
 // you can also register individual languages
 // lowlight.register('html', html)
@@ -62,9 +62,9 @@ export default () => {
         },
         codeBlock: false
       }),
-      CodeBlockLowlight.configure({
-        lowlight: createLowlight(common)
-      }),
+      // CodeBlockLowlight.configure({
+      //   lowlight: createLowlight(common)
+      // }),
       TextAlign.configure({
         types: ['heading', 'paragraph'],
       }),
@@ -106,12 +106,12 @@ export default () => {
         }
       }),
       // CodeBlockLowlight.configure({ lowlight }),
-      // CodeBlockLowlight
-      //   .extend({
-      //     addNodeView() {
-      //       return ReactNodeViewRenderer(CodeBlockComponent)
-      //     },
-      // }).configure({ lowlight }),
+      CodeBlockLowlight
+        .extend({
+          addNodeView() {
+            return ReactNodeViewRenderer(CodeBlockComponent)
+          },
+      }).configure({ lowlight }),
       ReactComponent,
     ],
     content: `
