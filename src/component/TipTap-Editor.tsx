@@ -93,7 +93,7 @@ export default () => {
           addNodeView() {
             return ReactNodeViewRenderer(CodeBlockComponent)
           },
-      }).configure({ lowlight: createLowlight(all) }),
+      }).configure({ lowlight: createLowlight(common) }),
       ReactComponent,
     ],
     content: `
