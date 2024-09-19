@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/component/suggetions/items.js", "src/component/suggetions/commands.js", "src/component/callout/callout.js", "src/component/drag-drop/DragNode.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/component/suggetions/items.js", "src/component/suggetions/commands.js", "src/component/callout/callout.js", "src/component/drag-drop/DragBlockView.jsx"],
   "exclude": ["node_modules"]
 }

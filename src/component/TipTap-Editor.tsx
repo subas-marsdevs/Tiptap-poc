@@ -15,6 +15,7 @@ import Placeholder from '@tiptap/extension-placeholder'
 import { FloatingMenu } from './floating-menu'
 import Dropcursor from '@tiptap/extension-dropcursor'
 import BulletList from '@tiptap/extension-bullet-list'
+import Document from '@tiptap/extension-document'
 import Commands from './suggetions/commands';
 import getSuggestionItems from "./suggetions/items";
 import renderItems from "./suggetions/renderItems";
@@ -22,14 +23,9 @@ import Blockquote from '@tiptap/extension-blockquote'
 import Callout from './callout/callout';
 import ReactComponent from './callout/CalloutExtention'
 import CodeBlockComponent from './codeblock/CodeBlockComponent'
-// import DraggableNode from './drag-drop/DragNode'
-import css from 'highlight.js/lib/languages/css'
-import js from 'highlight.js/lib/languages/javascript'
-import ts from 'highlight.js/lib/languages/typescript'
-import html from 'highlight.js/lib/languages/xml'
 import { CodeBlockLowlight } from '@tiptap/extension-code-block-lowlight';
-import { all, common, createLowlight } from 'lowlight';
-
+import { common, createLowlight } from 'lowlight';
+import { DragHandle }  from './drag-drop/DragBlockNode';
 
 export default () => {
 
@@ -38,6 +34,7 @@ export default () => {
       Dropcursor.configure({
         color: 'red',
       }),
+      Document,
       StarterKit.configure({
         bulletList: {
           keepMarks: true,
@@ -49,6 +46,7 @@ export default () => {
         },
         codeBlock: false
       }),
+      DragHandle,
       TextAlign.configure({
         types: ['heading', 'paragraph'],
       }),

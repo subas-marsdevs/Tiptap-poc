@@ -260,3 +260,26 @@ ol{
 .tiptap pre .hljs-strong {
   font-weight: 700;
 }
+
+
+.global-drag-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px; 
+  height: 30px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  cursor: grab;
+}
+
+.global-drag-handle::after {
+  content: '⠿';
+  font-size: 20px; 
+  color: #333;
+  margin-top: 3px;
+}
